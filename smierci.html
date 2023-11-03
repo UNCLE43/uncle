@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+<head>
+  
+  <meta charset="utf8"/>
+  <title>UncleApp</title>
+  <meta name="description" content="Sprzedam rzeczy w profesjonalny sposób" />
+  <meta name="keywords" content="mahrez, ginie, wujek />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <link rel="stylesheet" href="style.css" type="text/css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body>
+<a href="index.html"> <div class="logo"> Uncle App </div></a>
+
+
+
+<div class="menu">
+<div class="chuj">
+<a href="index.html"><div class="link"> Strona główna</div></a>
+<a href="ranking.html"><div class="link"> Ranking </div></a>
+<a href="wydarzenia.html"><div class="link"> Wydarzenia  </div></a>
+<a href="smierci.html"><div class="link"> Śmierci mahreza </div></a>
+</div>
+</div>
+<div style="clear:both;"></div>
+
+<div class="content1" style="height:350px;"> <h1> Dzisiejsze śmierci Mahreza </h1> <h2> Aplikacja stworzona przez wujka by móc notować jego śmierci </h2> 
+<div class="konsola1"> <p style="color:#edae0e;padding:0px;margin:0px;margin-left:40px;"> Mahrez death's on live now! </p>
+<div class="konsola"> <p id="changingText"> Napis 1 </p> </div></div>
+
+<script>
+    const texts = ["Mahrez died", "mahrez was slain by Some UNCLE", "Mahrez explode", "mahrez drowned", "mahrez fall into oblivious hole", "Rygrys has been eaten", "Mahrez starwed to death", "Malcon has been eliminated", "Halloween mastero killed mahrez", "Mahrez has been remove from existence", "mahrez fall apart" ,"mahrez was eaten", "HE IS JUST FUCKING DEAD!!!", "Mahrez has been ben penisoned to death"];
+    let currentIndex = 0;
+    const changingText = document.getElementById("changingText");
+
+    function changeText() {
+        changingText.textContent = texts[currentIndex];
+        currentIndex = (currentIndex + 1) % texts.length;
+    }
+
+    setInterval(changeText, 2000); // Zmień tekst co 10 sekund (10000 milisekund).
+
+    // Wykonaj zmianę tekstu od razu po załadowaniu strony.
+    changeText();
+</script>
+
+
+<div class="licznik1">  Śmierci Mahreza: <span id="countdownDisplay">0</span></div>
+
+<script>
+    const countdownDisplay = document.getElementById("countdownDisplay");
+    const targetNumber = 40000;
+    const countdownInterval = 2000; // Odliczaj co 1.5 sekundy.
+
+    function getRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function countDown() {
+        const currentNumber = parseInt(countdownDisplay.textContent);
+
+        if (currentNumber >= targetNumber) {
+            const storedNumber = localStorage.getItem("countdownNumber");
+            if (storedNumber) {
+                countdownDisplay.textContent = storedNumber;
+            } else {
+                countdownDisplay.textContent = getRandomNumber(1, 101);
+            }
+        } else {
+            countdownDisplay.textContent = currentNumber + 1;
+            localStorage.setItem("countdownNumber", countdownDisplay.textContent);
+            setTimeout(countDown, countdownInterval);
+        }
+    }
+
+    // Sprawdź, czy istnieje zapisana liczba w pamięci lokalnej i rozpocznij odliczanie od niej.
+    const storedNumber = localStorage.getItem("countdownNumber");
+    if (storedNumber) {
+        countdownDisplay.textContent = storedNumber;
+    } else {
+        countdownDisplay.textContent = getRandomNumber(1, 101);
+    }
+
+    countDown(); // Rozpocznij odliczanie.
+</script>
+
+
+<div class="licznik2"> Wczorajsze śmierci: 238 </div>
+
+
+
+</div>
+
+<div class="footer"> U.N.C.L.E - Firma sprzątająca dowody na gnojenie mahreza &copyprawa do gnojenia mahreza zastrzeżone </div>
+
+
+</body>
+
+</HTML>
